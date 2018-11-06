@@ -10,10 +10,12 @@
  *
  * @flow
  */
-import { app, BrowserWindow } from 'electron';
+import { app, BrowserWindow, ipcMain } from 'electron';
 import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
+
+const fs = require('fs');
 
 export default class AppUpdater {
   constructor() {
@@ -92,6 +94,49 @@ app.on('ready', async () => {
   mainWindow.on('closed', () => {
     mainWindow = null;
   });
+
+  // mainWindow.webContents.on('did-finish-load', () => {
+  //   // Use default printing options
+  //   mainWindow.webContents.printToPDF({}, (error, data) => {
+  //     if (error) throw error
+  //     fs.writeFile('./print.pdf', data, (error) => {
+  //       if (error) throw error
+  //       console.log('Write PDF successfully.')
+  //     })
+  //   })
+  // })
+
+  ipcMain.on('save-pdf', (event, docId = 'sam') => {
+    const exportDir = './';
+    const pdfPath = `${exportDir}${docId}.pdf`;
+    const printOptions = {
+      landscape: false,
+      marginsType: 0,
+      printBackground: true,
+      printSelectionOnly: false
+    };
+
+    mainWindow.webContents.printToPDF(printOptions, (error, data) => {
+      if (error) throw error;
+      fs.writeFile(pdfPath, data, err => {
+        if (err) {
+          throw err;
+        }
+        console.log('PDf exported');
+      });
+    });
+  });
+
+  // mainWindow.webContents.on('did-finish-load', () => {
+  //     // Use default printing options
+  //     mainWindow.webContents.printToPDF({}, (error, data) => {
+  //       if (error) throw error
+  //       fs.writeFile('./print.pdf', data, (error) => {
+  //         if (error) throw error
+  //         console.log('Write PDF successfully.')
+  //       })
+  //     })
+  //   })
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();

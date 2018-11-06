@@ -5,18 +5,16 @@ import App from './containers/App';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
 import Header from './Header';
-import SideBar from './SideBar';
+import { Invoice } from './components/Invoice';
 
 export default () => (
   <App>
     <Header />
     <div className="row">
-      <div className="col-sm-2">
-        <SideBar />
-      </div>
-      <div className="col-sm-10">
+      <div className="col-sm-12">
         <Switch>
           <Route path={routes.COUNTER} component={CounterPage} />
+          <Route path="/invoice" component={Invoice} />
           <Route path={routes.HOME} component={HomePage} />
         </Switch>
       </div>

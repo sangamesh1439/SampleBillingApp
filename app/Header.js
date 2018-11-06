@@ -12,9 +12,8 @@ export default class Header extends Component<Props> {
   render() {
     return (
       <div className="navbar">
-        <Link className="sam" to={routes.COUNTER}>
-          to Counter
-        </Link>
+        <Link to={routes.COUNTER}>to Counter</Link>
+        <Link to="/invoice">New Invoice </Link>
       </div>
     );
   }
