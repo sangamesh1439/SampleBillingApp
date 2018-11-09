@@ -48,6 +48,543 @@ export default class Invoice extends Component<Props> {
             doc.text(10, 280, 'Customer Sign');
             doc.text(140, 280, 'Authorised Stamp/ Signatory');
             doc.text(65, 290, 'SUBJECT TO NANDED JURISDICTION');
+            let startY = 80;
+            var header = function(data) {
+              doc.setFontSize(8);
+              doc.setTextColor(40);
+              doc.setFontStyle('normal');
+              // doc.textAlign("TAX INVOICE", {align: "center"}, data.settings.margin.left, 50);
+
+              //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
+              // doc.text("Testing Report", 110, 50);
+            };
+            // doc.autoTable(res.columns, res.data, {margin: {top:  startY+=30}});
+            doc.setFontSize(8);
+            doc.setFontStyle('normal');
+            var options = {
+              beforePageContent: header,
+              margin: {
+                top: 50
+              },
+              styles: {
+                overflow: 'linebreak',
+                fontSize: 8,
+                rowHeight: 'auto',
+                columnWidth: 'wrap'
+              },
+              columnStyles: {
+                1: { columnWidth: 'auto' },
+                2: { columnWidth: 'auto' },
+                3: { columnWidth: 'auto' },
+                4: { columnWidth: 'auto' },
+                5: { columnWidth: 'auto' },
+                6: { columnWidth: 'auto' }
+              },
+              startY: (startY += 50)
+            };
+
+            var columns = [
+              { title: 'ID', dataKey: 'id', width: 90 },
+              { title: 'Product', dataKey: 'Product', width: 40 },
+              { title: 'Rate/Item', dataKey: 'Rate/Item', width: 40 },
+              { title: 'Qty', dataKey: 'Qty', width: 40 },
+              { title: 'Dsnt', dataKey: 'Dsnt', width: 40 },
+              { title: 'S.Total', dataKey: 'STotal', width: 40 },
+              { title: 'CGST', dataKey: 'CGST', width: 40 },
+              { title: 'SGST', dataKey: 'SGST', width: 40 },
+              { title: 'IGST', dataKey: 'IGST', width: 40 },
+              { title: 'CESS', dataKey: 'CESS', width: 40 },
+              { title: 'Total', dataKey: 'Total', width: 40 }
+            ];
+            var rows = [
+              {
+                id: 1,
+                Product: 'SAMSUNG GALAXY S8 PLUS 64GB HSNCODE: 330854040',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '0',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 2,
+                Product: 'SAMSUNG GALAXY S8 PLUS 64GB HSNCODE: 330854040',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '0',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 3,
+                Product: 'SAMSUNG GALAXY S8 PLUS 64GB HSNCODE: 330854040',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'SAMSUNG GALAXY S8 PLUS 64GB HSNCODE: 330854040',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'SAMSUNG GALAXY S8 PLUS 64GB HSNCODE: 330854040',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: 4,
+                Product: 'Shaw',
+                'Rate/Item': '10',
+                Qty: '12',
+                Dsnt: '10',
+                STotal: '120',
+                CGST: 20,
+                SGST: 20,
+                IGST: 0,
+                CESS: 20,
+                Total: 180
+              },
+              {
+                id: '',
+                Product: '',
+                'Rate/Item': 'Total',
+                Qty: '',
+                Dsnt: '20',
+                STotal: '360',
+                CGST: 60,
+                SGST: 60,
+                IGST: 0,
+                CESS: 60,
+                Total: 680
+              }
+            ];
+
+            // columnStyles: {
+            //   id: {fillColor: 255}
+            // },
+
+            doc.autoTable(columns, rows, options);
 
             doc.save('a4.pdf');
             /* eslint-enable */
