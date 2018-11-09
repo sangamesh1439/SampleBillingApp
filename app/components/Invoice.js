@@ -13,7 +13,42 @@ export default class Invoice extends Component<Props> {
           onClick={() => {
             /* eslint-disable */
             const doc = new jsPDF();
-            doc.text('Hello world!', 10, 10);
+            doc.setFont('helvetica');
+
+            doc.setFontSize(12);
+            doc.text(90, 10, 'Invoice');
+            doc.text(150, 15, 'Invoice Number:');
+            doc.text(150, 20, 'Date: ');
+
+            doc.setFontType('bold');
+            doc.setFontSize(22);
+            doc.text(60, 25, 'Somawar Computers');
+            doc.setFontType('normal');
+            doc.setFontSize(12);
+            doc.text(
+              25,
+              30,
+              'Town Market, Nanded, Mobile Number: 9145555855 Email: nsomawar@gmail.com'
+            );
+            doc.text(
+              50,
+              35,
+              'GSTIN/UIN : xyz State Name: Maharashtra, Code: 27'
+            );
+
+            doc.text(20, 50, 'To: Sangamesh Somawar');
+            doc.text(20, 55, 'Contact Number: 9145555755');
+            doc.text(20, 60, 'GSTIN/UIN: 8765803815284691');
+            doc.text(
+              10,
+              240,
+              'Declaration: We declare that this invoice shows the actual price of the goods described and'
+            );
+            doc.text(10, 245, 'that all particulars are turue and correct');
+            doc.text(10, 280, 'Customer Sign');
+            doc.text(140, 280, 'Authorised Stamp/ Signatory');
+            doc.text(65, 290, 'SUBJECT TO NANDED JURISDICTION');
+
             doc.save('a4.pdf');
             /* eslint-enable */
           }}
