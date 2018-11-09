@@ -13,58 +13,47 @@ export default class Invoice extends Component<Props> {
           onClick={() => {
             /* eslint-disable */
             const doc = new jsPDF();
+            let yCordinate = 0;
             doc.setFont('helvetica');
 
             doc.setFontSize(12);
-            doc.text(90, 10, 'Invoice');
-            doc.text(150, 15, 'Invoice Number:');
-            doc.text(150, 20, 'Date: ');
+            doc.text(90, (yCordinate += 10), 'Invoice');
+            doc.text(150, (yCordinate += 5), 'Invoice Number:');
+            doc.text(150, (yCordinate += 5), 'Date: ');
 
             doc.setFontType('bold');
             doc.setFontSize(22);
-            doc.text(60, 25, 'Somawar Computers');
+            doc.text(60, (yCordinate += 5), 'Somawar Computers');
             doc.setFontType('normal');
             doc.setFontSize(12);
             doc.text(
               25,
-              30,
+              (yCordinate += 5),
               'Town Market, Nanded, Mobile Number: 9145555855 Email: nsomawar@gmail.com'
             );
             doc.text(
               50,
-              35,
+              (yCordinate += 5),
               'GSTIN/UIN : xyz State Name: Maharashtra, Code: 27'
             );
 
-            doc.text(20, 50, 'To: Sangamesh Somawar');
-            doc.text(20, 55, 'Contact Number: 9145555755');
-            doc.text(20, 60, 'GSTIN/UIN: 8765803815284691');
-            doc.text(
-              10,
-              240,
-              'Declaration: We declare that this invoice shows the actual price of the goods described and'
-            );
-            doc.text(10, 245, 'that all particulars are turue and correct');
-            doc.text(10, 280, 'Customer Sign');
-            doc.text(140, 280, 'Authorised Stamp/ Signatory');
-            doc.text(65, 290, 'SUBJECT TO NANDED JURISDICTION');
-            let startY = 80;
+            doc.text(20, (yCordinate += 15), 'To: Sangamesh Somawar');
+            doc.text(20, (yCordinate += 5), 'Contact Number: 9145555755');
+            doc.text(20, (yCordinate += 5), 'GSTIN/UIN: 8765803815284691');
+
             var header = function(data) {
               doc.setFontSize(8);
               doc.setTextColor(40);
               doc.setFontStyle('normal');
-              // doc.textAlign("TAX INVOICE", {align: "center"}, data.settings.margin.left, 50);
-
-              //doc.addImage(headerImgData, 'JPEG', data.settings.margin.left, 20, 50, 50);
-              // doc.text("Testing Report", 110, 50);
             };
-            // doc.autoTable(res.columns, res.data, {margin: {top:  startY+=30}});
             doc.setFontSize(8);
             doc.setFontStyle('normal');
+            // let yCordinate = 70;
+            yCordinate += 10;
             var options = {
               beforePageContent: header,
               margin: {
-                top: 50
+                top: 20
               },
               styles: {
                 overflow: 'linebreak',
@@ -80,7 +69,7 @@ export default class Invoice extends Component<Props> {
                 5: { columnWidth: 'auto' },
                 6: { columnWidth: 'auto' }
               },
-              startY: (startY += 50)
+              startY: yCordinate
             };
 
             var columns = [
@@ -585,6 +574,16 @@ export default class Invoice extends Component<Props> {
             // },
 
             doc.autoTable(columns, rows, options);
+            yCordinate = doc.autoTable.previous.finalY;
+
+            doc.text(10, (yCordinate += 30), 'Customer Sign');
+            doc.text(140, yCordinate, 'Authorised Stamp/ Signatory');
+            doc.text(
+              10,
+              (yCordinate += 10),
+              'Declaration: We declare that this invoice shows the actual price of the goods described and that all particulars are turue and correct'
+            );
+            doc.text(65, (yCordinate += 10), 'SUBJECT TO NANDED JURISDICTION');
 
             doc.save('a4.pdf');
             /* eslint-enable */
