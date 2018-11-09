@@ -2,20 +2,20 @@
 import React, { Component } from 'react';
 import './Invoice.css';
 
-const ipc = require('electron').ipcRenderer;
-
 type Props = {};
 
 export default class Invoice extends Component<Props> {
-  props: Props;
-
   render() {
     return (
       <div className="container">
         <button
           type="button"
           onClick={() => {
-            ipc.send('save-pdf');
+            /* eslint-disable */
+            const doc = new jsPDF();
+            doc.text('Hello world!', 10, 10);
+            doc.save('a4.pdf');
+            /* eslint-enable */
           }}
         >
           {' '}

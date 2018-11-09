@@ -28,6 +28,7 @@ app/xel.min.js
 app/material.css
 app/bootstrap.min.js
 app/bootstrap.min.css
+app/jspdf.min.js
 
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git

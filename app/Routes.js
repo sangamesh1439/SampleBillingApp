@@ -5,7 +5,7 @@ import App from './containers/App';
 import HomePage from './containers/HomePage';
 import CounterPage from './containers/CounterPage';
 import Header from './Header';
-import { Invoice } from './components/Invoice';
+import Invoice from './components/Invoice';
 
 export default () => (
   <App>
