@@ -15,67 +15,37 @@ export default class Invoice extends Component<Props> {
             printInvoice();
           }}
         >
-          {' '}
-          Click here{' '}
+          Print
         </button>
         <div className="row">
           <div className="col-xs-12">
             <div className="invoice-title">
-              <h2>Invoice</h2>
-              <h3 className="pull-right">Order # 12345</h3>
+              <h2>Invoice: Invoice Number</h2>
             </div>
             <hr />
-            <div className="row">
-              <div className="col-xs-6">
-                <address>
-                  <strong>Billed To:</strong>
-                  <br />
-                  John Smith
-                  <br />
-                  1234 Main
-                  <br />
-                  Apt. 4B
-                  <br />
-                  Springfield, ST 54321
-                </address>
-              </div>
-
-              <div className="col-xs-6 text-right">
-                <address>
-                  <strong>Shipped To:</strong>
-                  <br />
-                  Jane Smith
-                  <br />
-                  1234 Main
-                  <br />
-                  Apt. 4B
-                  <br />
-                  Springfield, ST 54321
-                </address>
-              </div>
-            </div>
-            <div className="row">
-              <div className="col-xs-6">
-                <address>
-                  <strong>Payment Method:</strong>
-                  <br />
-                  Visa ending **** 4242
-                  <br />
-                  jsmith@email.com
-                </address>
-              </div>
-              <div className="col-xs-6 text-right">
-                <address>
-                  <strong>Order Date:</strong>
-                  <br />
-                  March 7, 2014
-                  <br />
-                  <br />
-                </address>
-              </div>
-            </div>
           </div>
         </div>
+        <br />
+
+        <div className="row">
+          <div className="col-xs-4">
+            <x-input skin="flat">
+              <x-label>Customer Name</x-label>
+            </x-input>
+          </div>
+          <div className="col-xs-4">
+            <x-input skin="flat">
+              <x-label>Contact Number</x-label>
+            </x-input>
+          </div>
+          <div className="col-xs-4">
+            <x-input skin="flat">
+              <x-label>GSTIN/UIN:</x-label>
+            </x-input>
+          </div>
+        </div>
+
+        <br />
 
         <div className="row">
           <div className="col-md-12">
