@@ -9,20 +9,19 @@ export default class Invoice extends Component<Props> {
   render() {
     return (
       <div className="container">
-        <button
-          type="button"
+        <x-button
           onClick={() => {
             printInvoice();
           }}
         >
-          Print
-        </button>
+          <x-label>Print</x-label>
+        </x-button>
+
         <div className="row">
           <div className="col-xs-12">
             <div className="invoice-title">
               <h2>Invoice: Invoice Number</h2>
             </div>
-            <hr />
           </div>
         </div>
         <br />
