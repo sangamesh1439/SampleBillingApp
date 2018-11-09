@@ -1,12 +1,19 @@
 // @flow
 import React, { Component } from 'react';
 import './Invoice.css';
+import { reduxForm, Field } from 'redux-form';
 import { printInvoice } from './printInvoice';
 
 type Props = {};
 
-export default class Invoice extends Component<Props> {
+const validate = values => {
+  console.log(values);
+  return { firstName: 'sam' };
+};
+class Invoice extends Component<Props> {
   render() {
+    console.log('props: ', this.props);
+    const { handleSubmit } = this.props;
     return (
       <div className="container">
         <x-button
@@ -26,23 +33,50 @@ export default class Invoice extends Component<Props> {
         </div>
         <br />
 
-        <div className="row">
-          <div className="col-xs-4">
-            <x-input skin="flat">
-              <x-label>Customer Name</x-label>
-            </x-input>
+        <form onSubmit={handleSubmit}>
+          <div className="row">
+            <div className="col-xs-4">
+              <Field
+                name="customerName"
+                component={props => {
+                  const { input } = props;
+                  return (
+                    <x-input skin="flat" {...input}>
+                      <x-label>Customer Name</x-label>
+                    </x-input>
+                  );
+                }}
+              />
+            </div>
+
+            <div className="col-xs-4">
+              <Field
+                name="contactNumber"
+                component={props => {
+                  const { input } = props;
+                  return (
+                    <x-input skin="flat" {...input}>
+                      <x-label>Contact Number</x-label>
+                    </x-input>
+                  );
+                }}
+              />
+            </div>
+            <div className="col-xs-4">
+              <Field
+                name="gstNumber"
+                component={props => {
+                  const { input } = props;
+                  return (
+                    <x-input skin="flat" {...input}>
+                      <x-label>GSTIN/UIN</x-label>
+                    </x-input>
+                  );
+                }}
+              />
+            </div>
           </div>
-          <div className="col-xs-4">
-            <x-input skin="flat">
-              <x-label>Contact Number</x-label>
-            </x-input>
-          </div>
-          <div className="col-xs-4">
-            <x-input skin="flat">
-              <x-label>GSTIN/UIN:</x-label>
-            </x-input>
-          </div>
-        </div>
+        </form>
 
         <br />
 
@@ -127,3 +161,8 @@ export default class Invoice extends Component<Props> {
     );
   }
 }
+
+export default reduxForm({
+  form: 'invoice', // a unique name for this form
+  validate
+})(Invoice);
